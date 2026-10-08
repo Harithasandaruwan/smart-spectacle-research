@@ -1,0 +1,94 @@
+/* Explicit layers: site background 0, decorative scene 1, content 2, nav 10. */
+#root {
+  isolation: isolate;
+  background: linear-gradient(135deg, #eef6f6 0, #ffffff 65%, #f5f7f8 100%);
+}
+
+main,
+.site-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.spectacle-scene {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.spectacle-scene *,
+.spectacle-scene canvas {
+  pointer-events: none !important;
+}
+
+.spectacle-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.spectacle-caption {
+  position: absolute;
+  top: 73%;
+  right: 9%;
+  padding: 5px 12px;
+  border: 1px solid #cbdcde;
+  border-radius: 20px;
+  background: #ffffffed;
+  color: #526371;
+  font-size: .72rem;
+  letter-spacing: .04em;
+  opacity: 0;
+}
+
+.spectacle-at-home .spectacle-caption { opacity: 1; }
+
+.spectacle-fallback {
+  position: absolute;
+  top: 24%;
+  right: 3%;
+  width: 43%;
+  max-width: 600px;
+  opacity: 0;
+}
+
+.spectacle-fallback svg { display: block; width: 100%; }
+.spectacle-at-home .spectacle-fallback { opacity: 1; }
+
+/* Clear section surfaces expose the model. Existing cards, notices, photos,
+   downloads and the table retain opaque surfaces. */
+main .hero,
+main .section-muted { background: transparent; }
+
+main .section > .container > :is(h2, h3, .eyebrow, .section-intro, .table-note) {
+  width: fit-content;
+  background: #fffffff5;
+  box-shadow: 0 0 18px 12px #fffffff5;
+}
+
+.literature-table-wrapper { background: #ffffff; }
+
+@media (min-width: 801px) {
+  .hero h1 { max-width: 58%; font-size: clamp(2.2rem, 4.1vw, 3.7rem); }
+  .hero .eyebrow,
+  .hero-description { max-width: 55%; }
+  .hero h1,
+  .hero-description,
+  .hero .eyebrow { background: #eef6f6f5; box-shadow: 0 0 20px 14px #eef6f6f5; }
+  .hero-facts { background: #eef6f6f5; }
+}
+
+@media (max-width: 800px) {
+  /* A small static silhouette stays behind a solid text surface on phones. */
+  .spectacle-fallback { top: 180px; right: -12px; width: 180px; }
+  .spectacle-at-home .spectacle-fallback { opacity: .2; }
+  .spectacle-caption { top: 163px; right: 20px; font-size: .65rem; }
+  .hero h1,
+  .hero-description,
+  .hero .eyebrow { position: relative; background: #eef6f6f5; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spectacle-scene * { animation: none !important; transition: none !important; }
+}

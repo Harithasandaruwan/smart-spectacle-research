@@ -560,3 +560,190 @@ p {
     grid-template-columns: 1fr;
   }
 }
+
+/* Team layout and photo sizes */
+#team .team-section-heading {
+  max-width: 760px;
+  margin: 0 auto 35px;
+  text-align: center;
+}
+
+#team .team-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+#team .team-profile-card {
+  position: relative;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid #dde5e9;
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+#team .team-profile-photo {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 240px;
+  aspect-ratio: auto;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 18px;
+}
+
+#team .team-profile-details {
+  padding: 18px 4px 4px;
+}
+
+#team .profile-name-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+#team .profile-name-row h3 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+#team .team-student-id {
+  margin-bottom: 8px;
+  color: #096b78;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+#team .team-component-title {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+
+#team .linkedin-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 7px;
+  color: #0a66c2;
+}
+
+#team .linkedin-link:hover {
+  background: #eaf3fc;
+}
+
+#team .team-profile-leader {
+  border: 2px solid #149447;
+}
+
+#team .team-leader-badge {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 7px 18px;
+  border-radius: 20px;
+  background: #149447;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+#team .supervisor-heading {
+  margin-top: 60px;
+}
+
+#team .supervisor-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+#team .supervisor-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #dde5e9;
+  border-radius: 24px;
+  background: #ffffff;
+}
+
+#team .supervisor-profile-photo {
+  display: block;
+  flex: 0 0 72px;
+  width: 72px;
+  max-width: 72px;
+  height: 72px;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 14px;
+}
+
+#team .supervisor-profile-details {
+  flex: 1;
+  min-width: 0;
+}
+
+#team .supervisor-profile-details h3 {
+  margin-bottom: 6px;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+#team .supervisor-profile-details p {
+  margin-bottom: 0;
+  color: #096b78;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+#team .profile-photo-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #eef6f6;
+  color: #096b78;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+@media (max-width: 1000px) {
+  #team .team-profile-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 32px;
+  }
+}
+
+@media (max-width: 700px) {
+  #team .supervisor-profile-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  #team .team-profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #team .team-profile-card {
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  #team .supervisor-profile-card {
+    padding: 16px;
+    gap: 12px;
+  }
+}

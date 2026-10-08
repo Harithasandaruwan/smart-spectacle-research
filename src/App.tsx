@@ -9,10 +9,12 @@ import Methodology from './components/Methodology'
 import Downloads from './components/Downloads'
 import Team from './components/Team'
 import Footer from './components/Footer'
+import SpectacleBackground from './components/three/SpectacleBackground'
 
 function App() {
   return (
     <>
+      <SpectacleBackground />
       <a className="skip-link" href="#main">
         Skip to content
       </a>

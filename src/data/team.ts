@@ -9,7 +9,7 @@ type MemberProfile = {
 const memberProfiles: Record<string, MemberProfile> = {
   IT22074690: {
     photo: '/images/team/sandaruwan.png',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/haritha-sandaruwan-1144392a8',
     isLeader: false,
   },
   IT22063014: {
