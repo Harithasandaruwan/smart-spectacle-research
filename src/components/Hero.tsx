@@ -1,7 +1,11 @@
+import ProductStage from './three/ProductStage'
+
 function Hero() {
   return (
     <section id="home" className="hero">
       <div className="container">
+        <div className="hero-layout">
+          <div className="hero-copy">
         <p className="eyebrow">
           SLIIT · Research Project · R26-IT-134
         </p>
@@ -26,6 +30,9 @@ function Hero() {
           </a>
         </div>
 
+          </div>
+          <ProductStage name="home" />
+        </div>
         <div className="hero-facts">
           <div>
             <strong>04</strong>

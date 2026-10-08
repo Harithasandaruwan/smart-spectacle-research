@@ -1,4 +1,5 @@
 import { components } from '../data/project'
+import ProductStage from './three/ProductStage'
 
 function ResearchComponents() {
   return (
@@ -12,6 +13,7 @@ function ResearchComponents() {
           system.
         </p>
 
+        <ProductStage name="components" />
         <div className="grid two-columns">
           {components.map((component) => (
             <article className="card" key={component.studentId}>

@@ -1,121 +1,114 @@
-import { useRef } from 'react'
-import { useFrame, useThree } from '@react-three/fiber'
-import { RoundedBox } from '@react-three/drei'
-import { Group, MeshStandardMaterial, Shape, Path } from 'three'
-import type { MutableRefObject } from 'react'
-import type { SpectaclePose } from './scenePoses'
+import { useEffect, useMemo, useRef } from 'react'
+import type { RefObject } from 'react'
+import { useFrame } from '@react-three/fiber'
+import { useGLTF } from '@react-three/drei'
+import { Box3, Group, MathUtils, Mesh, MeshPhysicalMaterial, MeshStandardMaterial, Vector3 } from 'three'
+import type { SceneAnchor, SpectaclePose } from './scenePoses'
 
-function roundedOutline(width: number, height: number, radius: number) {
-  const path = new Path()
-  const x = -width / 2, y = -height / 2
-  path.moveTo(x + radius, y)
-  path.lineTo(x + width - radius, y)
-  path.quadraticCurveTo(x + width, y, x + width, y + radius)
-  path.lineTo(x + width, y + height - radius)
-  path.quadraticCurveTo(x + width, y + height, x + width - radius, y + height)
-  path.lineTo(x + radius, y + height)
-  path.quadraticCurveTo(x, y + height, x, y + height - radius)
-  path.lineTo(x, y + radius)
-  path.quadraticCurveTo(x, y, x + radius, y)
-  return path
-}
+export const MODEL_URL = `${import.meta.env.BASE_URL}models/smart-spectacle.glb`
 
-// Shapes are CPU-side outlines; Fiber owns and disposes the declarative GPU geometry.
-const lensShape = new Shape(roundedOutline(1.65, 1.08, .3).getPoints(12))
-const frameShape = new Shape(roundedOutline(1.9, 1.33, .4).getPoints(12))
-frameShape.holes.push(roundedOutline(1.65, 1.08, .3))
-const frameOptions = { depth: .12, bevelEnabled: true, bevelSegments: 2, steps: 1, bevelSize: .035, bevelThickness: .035, curveSegments: 12 }
-
-function Housing({ size, position, color = '#172b3a' }: {
-  size: [number, number, number]; position: [number, number, number]; color?: string
+export default function SmartSpectacleModel({ pose, anchors, surface, motion, onReady }: {
+  pose: RefObject<SpectaclePose>; anchors: RefObject<SceneAnchor[]>;
+  surface: RefObject<HTMLDivElement | null>; motion: boolean; onReady: () => void
 }) {
-  return (
-    <RoundedBox args={size} position={position} radius={.045} smoothness={2}>
-      <meshStandardMaterial color={color} roughness={.38} metalness={.35} />
-    </RoundedBox>
-  )
-}
-
-export default function SmartSpectacleModel({ pose }: { pose: MutableRefObject<SpectaclePose> }) {
+  const { scene } = useGLTF(MODEL_URL)
   const root = useRef<Group>(null)
-  const lenses = useRef<Group>(null)
-  const camera = useRef<Group>(null)
-  const sensors = useRef<Group>(null)
-  const glow = useRef<MeshStandardMaterial>(null)
-  const cameraRing = useRef<MeshStandardMaterial>(null)
-  const sensorFaces = useRef<(MeshStandardMaterial | null)[]>([])
-  const viewport = useThree(state => state.viewport)
+  const born = useRef<number | null>(null)
+  const product = useMemo(() => {
+    const model = scene.clone(true)
+    const ownedMaterials = new Set<MeshStandardMaterial>()
+    const highlights: MeshStandardMaterial[] = []
+    const materialCopies = new Map<MeshStandardMaterial, MeshStandardMaterial>()
+    model.traverse(object => {
+      if (!(object instanceof Mesh)) return
+      const copy = (source: MeshStandardMaterial) => {
+        if (materialCopies.has(source)) return materialCopies.get(source)!
+        const material = source.clone()
+        materialCopies.set(source, material)
+        ownedMaterials.add(material)
+        if (material.name === 'Clear curved lenses' && material instanceof MeshPhysicalMaterial) {
+          // An alpha canvas has no opaque background to refract. A transparent
+          // physical glass shell keeps lenses clear without a costly opaque
+          // transmission pass (which otherwise appears white over page CSS).
+          material.transmission = 0
+          material.transparent = true
+          material.opacity = .14
+          material.depthWrite = false
+          material.roughness = .06
+          material.envMapIntensity = .32
+          material.color.set('#cee9ed')
+        }
+        if (material.name === 'Camera optical glass' && material instanceof MeshPhysicalMaterial) {
+          material.transmission = .18
+          material.roughness = .055
+          material.envMapIntensity = .7
+        }
+        if (material.name === 'Translucent silicone nose pads' && material instanceof MeshPhysicalMaterial) {
+          material.transmission = 0
+          material.transparent = true
+          material.opacity = .45
+          material.depthWrite = false
+        }
+        if (material.name === 'Restrained teal accent') {
+          material.emissive.set('#096b78')
+          highlights.push(material)
+        }
+        return material
+      }
+      object.material = Array.isArray(object.material) ? object.material.map(copy) : copy(object.material as MeshStandardMaterial)
+    })
+    const center = new Box3().setFromObject(model).getCenter(new Vector3())
+    model.position.sub(center)
+    return {
+      model, ownedMaterials, highlights,
+      lenses: model.getObjectByName('LensAssembly'),
+      camera: model.getObjectByName('CameraAssembly'),
+      sensors: model.getObjectByName('SensorAssembly'),
+    }
+  }, [scene])
 
-  useFrame(({ clock, invalidate }) => {
-    if (!root.current || document.hidden) return
+  useEffect(() => {
+    onReady()
+    return () => { product.ownedMaterials.forEach(material => material.dispose()) }
+  }, [onReady, product])
+
+  useFrame(({ clock, viewport, size, invalidate }) => {
+    if (!root.current || document.hidden || !anchors.current.length) return
     const p = pose.current
+    const lower = Math.min(anchors.current.length - 1, Math.floor(p.anchor))
+    const a = anchors.current[lower]
+    const b = anchors.current[Math.min(lower + 1, anchors.current.length - 1)]
+    const blend = p.anchor - lower
+    const x = MathUtils.lerp(a.x, b.x, blend)
+    const y = MathUtils.lerp(a.y, b.y, blend) - scrollY
+    const width = MathUtils.lerp(a.width, b.width, blend)
+    const height = MathUtils.lerp(a.height, b.height, blend)
+    const visible = y + height / 2 > 0 && y - height / 2 < size.height && p.opacity > .004
+    root.current.visible = visible
     const time = clock.elapsedTime
-    root.current.visible = p.opacity > .004
-    root.current.position.set(p.x * viewport.width, p.y * viewport.height + Math.sin(time * .7) * .035, 0)
-    root.current.rotation.set(p.rx + Math.sin(time * .45) * .015, p.ry, p.rz)
-    root.current.scale.setScalar(viewport.width * .075 * p.scale)
-    if (lenses.current) lenses.current.position.set(0, -p.explode * .22, .09 + p.explode * .72)
-    if (camera.current) camera.current.position.set(-p.explode * .28, p.explode * .42, p.explode * .35)
-    if (sensors.current) sensors.current.position.set(p.explode * .3, p.explode * .38, p.explode * .4)
-    if (glow.current) glow.current.emissiveIntensity = .25 + p.accent * .7 + p.pulse * (.5 + Math.sin(time * 2.5) * .5)
-    const intensity = .12 + p.accent * .65 + p.pulse * (.25 + Math.sin(time * 2.5) * .25)
-    if (cameraRing.current) cameraRing.current.emissiveIntensity = intensity
-    sensorFaces.current.forEach(material => { if (material) material.emissiveIntensity = intensity })
-    // Demand rendering stops when invisible or when the tab is hidden. GSAP
-    // invalidates on scroll so the model wakes when scrolling back upward.
-    if (root.current.visible) invalidate()
+    born.current ??= time
+    const entrance = motion ? MathUtils.smoothstep(time - born.current, 0, 1.2) : 1
+    const idle = motion && visible ? Math.sin(time * .65) * .025 : 0
+    const worldPerPixel = viewport.width / size.width
+    root.current.position.set((x - size.width / 2) * worldPerPixel, (size.height / 2 - y) * worldPerPixel + idle, 0)
+    root.current.rotation.set(p.rx + (motion ? Math.sin(time * .4) * .008 : 0), p.ry, p.rz)
+    const fitWidth = Math.min(width * .96, height * 2.15)
+    root.current.scale.setScalar(fitWidth * worldPerPixel / 5.5 * p.scale * (.97 + .03 * entrance))
+    product.lenses?.position.set(0, -p.explode * .23, p.explode * .64)
+    product.camera?.position.set(p.explode * .32, p.explode * .38, p.explode * .2)
+    product.sensors?.position.set(-p.explode * .32, p.explode * .38, p.explode * .2)
+    const pulse = motion ? p.pulse * (.1 + Math.sin(time * 2) * .1) : 0
+    product.highlights.forEach(material => { material.emissiveIntensity = .025 + p.accent * .12 + pulse })
+    if (surface.current) {
+      // A quiet fade during handoffs prevents the illustration sweeping over
+      // paragraphs while its next real layout slot enters the viewport.
+      const handoff = 1 - Math.sin(blend * Math.PI) ** 2 * .8
+      surface.current.style.opacity = String(visible ? p.opacity * handoff * entrance : 0)
+    }
+    if (visible && motion) invalidate()
   })
 
-  return (
-    <group ref={root}>
-      {[-1.08, 1.08].map(x => (
-        <mesh key={x} position={[x, 0, 0]}>
-          <extrudeGeometry args={[frameShape, frameOptions]} />
-          <meshStandardMaterial color="#172b3a" roughness={.3} metalness={.55} />
-        </mesh>
-      ))}
-      <Housing size={[.46, .12, .16]} position={[0, .18, .055]} />
-      <group ref={lenses} position={[0, 0, .09]}>
-        {[-1.08, 1.08].map(x => (
-          <mesh key={x} position={[x, 0, 0]}>
-            <shapeGeometry args={[lensShape, 16]} />
-            <meshPhysicalMaterial color="#8bc9d0" transparent opacity={.24} roughness={.14} metalness={.15} side={2} depthWrite={false} />
-          </mesh>
-        ))}
-      </group>
-      {[-1, 1].map(side => (
-        <group key={side}>
-          <Housing size={[.17, .22, 2.35]} position={[side * 2.01, .37, -1.08]} />
-          <Housing size={[.2, .32, .6]} position={[side * 1.96, .2, -2.45]} />
-          <Housing size={[.09, .12, .42]} position={[side * 2.11, .37, -.4]} color="#096b78" />
-          <Housing size={[.22, .15, .19]} position={[side * .29, -.02, -.05]} color="#b5cbd0" />
-        </group>
-      ))}
-      <group ref={camera}>
-        <Housing size={[.48, .36, .32]} position={[-1.75, .6, .13]} />
-        <mesh position={[-1.75, .6, .32]} rotation={[Math.PI / 2, 0, 0]}>
-          <cylinderGeometry args={[.125, .125, .1, 24]} />
-          <meshStandardMaterial ref={cameraRing} color="#096b78" emissive="#096b78" metalness={.6} roughness={.2} />
-        </mesh>
-        <mesh position={[-1.75, .6, .38]}>
-          <sphereGeometry args={[.084, 20, 12]} />
-          <meshStandardMaterial color="#071c2b" metalness={.65} roughness={.13} />
-        </mesh>
-      </group>
-      <group ref={sensors}>
-        <Housing size={[.67, .34, .34]} position={[1.62, .61, .14]} />
-        <Housing size={[.29, .28, .78]} position={[2.04, .38, -.64]} />
-        {[1.45, 1.76].map((x, index) => (
-          <mesh key={x} position={[x, .61, .325]} rotation={[Math.PI / 2, 0, 0]}>
-            <cylinderGeometry args={[.095, .095, .045, 20]} />
-            <meshStandardMaterial ref={material => { sensorFaces.current[index] = material }} color="#0a4452" emissive="#096b78" emissiveIntensity={.6} roughness={.23} />
-          </mesh>
-        ))}
-        <mesh position={[2.2, .45, -.4]}>
-          <sphereGeometry args={[.04, 12, 8]} />
-          <meshStandardMaterial ref={glow} color="#9ce8df" emissive="#2ac5b8" />
-        </mesh>
-      </group>
-    </group>
-  )
+  // Geometry belongs to useGLTF's small shared cache. Only cloned materials
+  // belong to this instance; disposing cached geometry would break remounts.
+  return <group ref={root}><primitive object={product.model} dispose={null} /></group>
 }

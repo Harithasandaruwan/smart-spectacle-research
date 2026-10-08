@@ -1,3 +1,5 @@
+import ProductStage from './three/ProductStage'
+
 const researchSteps = [
   {
     title: 'Understand the problem',
@@ -25,6 +27,8 @@ function Methodology() {
   return (
     <section id="methodology" className="section">
       <div className="container">
+        <div className="product-section-heading">
+          <div>
         <p className="eyebrow">Proposed methodology</p>
         <h2>From research to prototype evaluation</h2>
 
@@ -33,6 +37,9 @@ function Methodology() {
           development and experimental evaluation.
         </p>
 
+          </div>
+          <ProductStage name="methodology" />
+        </div>
         <ol className="methodology-list">
           {researchSteps.map((step) => (
             <li className="card" key={step.title}>

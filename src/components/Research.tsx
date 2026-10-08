@@ -1,7 +1,11 @@
+import ProductStage from './three/ProductStage'
+
 function Research() {
   return (
     <section id="research" className="section">
       <div className="container">
+        <div className="product-section-heading">
+          <div>
         <p className="eyebrow">Research overview</p>
         <h2>Supporting safer indoor mobility</h2>
 
@@ -10,6 +14,9 @@ function Research() {
           positioning, hazard detection, and guardian support.
         </p>
 
+          </div>
+          <ProductStage name="research" />
+        </div>
         <div className="grid three-columns">
           <article className="card">
             <h3>The problem</h3>
