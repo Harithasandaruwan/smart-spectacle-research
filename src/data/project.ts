@@ -12,7 +12,8 @@ export const components = [
       'Sensor data acquisition',
       'Audio feedback support',
     ],
-    document: '/documents/proposal-sandaruwan.pdf',
+    // The existing PDF renders blank; restore this link when a usable file is supplied.
+    document: null,
   },
   {
     number: '02',

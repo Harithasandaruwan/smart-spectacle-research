@@ -1,6 +1,7 @@
 import { components } from '../data/project'
 
 const documentsToAdd = [
+  'Smart Spectacle Hardware proposal (replacement PDF)',
   'Project charter',
   'Single group proposal document',
   'Checklist documents',
@@ -16,9 +17,9 @@ function Documents() {
         <h2 id="documents-heading">Documents</h2>
 
         <p className="section-intro">
-          The topic assessment form and four individual component proposals are
-          available below. Other guideline documents will be linked when files
-          are provided.
+          The topic assessment form and three usable individual component
+          proposals are available below. Other guideline documents will be
+          linked when usable files are provided.
         </p>
 
         <h3>Available files</h3>
@@ -35,7 +36,7 @@ function Documents() {
             <span className="file-badge">PDF ↓</span>
           </a>
 
-          {components.map((component) => (
+          {components.map((component) => component.document && (
             <a
               className="download-item"
               href={component.document}
@@ -53,12 +54,12 @@ function Documents() {
           ))}
         </div>
 
-        <h3 className="subsection-heading">Files to add</h3>
+        <h3 className="subsection-heading">Pending files</h3>
         <div className="grid two-columns">
           {documentsToAdd.map((title) => (
             <article className="card" key={title}>
               <h3>{title}</h3>
-              <p className="placeholder-detail">File not uploaded yet.</p>
+              <p className="placeholder-detail">No usable repository file yet.</p>
             </article>
           ))}
         </div>

@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 type Milestone = {
   title: string
-  description: string
+  description?: string
   date?: string
   marks?: string
 }
@@ -15,23 +15,19 @@ const milestones: Milestone[] = [
   },
   {
     title: 'Project proposal',
-    description: 'Four individual component proposal documents are available. Assessment details are still to be supplied.',
+    description: 'The available individual component proposals are listed in Documents.',
   },
   {
     title: 'Progress Presentation 1',
-    description: 'Presentation details and slides have not been supplied.',
   },
   {
     title: 'Progress Presentation 2',
-    description: 'Presentation details and slides have not been supplied.',
   },
   {
     title: 'Final assessment',
-    description: 'Assessment details and final documents have not been supplied.',
   },
   {
     title: 'Viva',
-    description: 'Viva details have not been supplied.',
   },
 ]
 
@@ -45,8 +41,8 @@ export default function Milestones() {
           <p className="milestones-eyebrow">PROJECT ROADMAP · R26-IT-134</p>
           <h2 id="milestones-title">Research milestones</h2>
           <p>
-            Browse the project assessments. Dates and allocated marks will be
-            added when the official assessment details are available.
+            Browse the project assessments. The assessment schedule and
+            allocated marks will be added when officially confirmed.
           </p>
         </header>
 
@@ -81,11 +77,13 @@ export default function Milestones() {
                     <span className="milestone-number">ASSESSMENT {String(index + 1).padStart(2, '0')}</span>
                   </div>
                   <h3>{milestone.title}</h3>
-                  <p>{milestone.description}</p>
-                  <p className="milestone-details">
-                    <span>Date: {milestone.date ?? 'To be supplied'}</span>
-                    <span>Marks: {milestone.marks ?? 'To be supplied'}</span>
-                  </p>
+                  {milestone.description && <p>{milestone.description}</p>}
+                  {(milestone.date || milestone.marks) && (
+                    <p className="milestone-details">
+                      {milestone.date && <span>Date: {milestone.date}</span>}
+                      {milestone.marks && <span>Marks: {milestone.marks}</span>}
+                    </p>
+                  )}
                 </article>
               </li>
             )

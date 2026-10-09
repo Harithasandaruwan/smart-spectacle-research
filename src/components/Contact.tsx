@@ -9,11 +9,10 @@ function Contact() {
           Information Technology (SLIIT).
         </p>
         <div className="notice">
-          <strong>Project contact details to add</strong>
+          <strong>Contact details</strong>
           <p>
-            Public project email: to be supplied. Contact phone number: to be
-            supplied if the team wants to publish one. A working message form
-            can be added after a receiving address is provided.
+            A public project email and phone number are not confirmed in the
+            repository. Contact details will be added here when confirmed.
           </p>
         </div>
       </div>

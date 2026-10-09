@@ -19,7 +19,7 @@ function PresentationSlides() {
           {plannedPresentations.map((title) => (
             <article className="card" key={title}>
               <h3>{title}</h3>
-              <p className="placeholder-detail">Slides not uploaded yet.</p>
+              <p className="placeholder-detail">Pending — no slide file in the repository.</p>
             </article>
           ))}
         </div>

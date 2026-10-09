@@ -37,13 +37,17 @@ function ResearchComponents() {
                   {component.studentId}
                 </p>
 
-                <a href={component.document} download>
-                  Download proposal
-                  <span className="sr-only">
-                    {' '}for {component.member}
-                  </span>
-                  <span aria-hidden="true"> →</span>
-                </a>
+                {component.document ? (
+                  <a href={component.document} download>
+                    Download proposal
+                    <span className="sr-only">
+                      {' '}for {component.member}
+                    </span>
+                    <span aria-hidden="true"> →</span>
+                  </a>
+                ) : (
+                  <span className="missing-document">Proposal PDF awaiting replacement</span>
+                )}
               </div>
             </article>
           ))}
