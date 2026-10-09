@@ -1,38 +1,57 @@
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { milestones } from '../data/milestones'
 
-type Milestone = {
-  title: string
-  description?: string
-  date?: string
-  marks?: string
+gsap.registerPlugin(ScrollTrigger)
+
+type MilestonesProps = {
+  selected: string
+  onSelect: (value: string) => void
 }
 
-// Add confirmed assessment dates and allocated marks here when supplied.
-const milestones: Milestone[] = [
-  {
-    title: 'Topic assessment',
-    description: 'The topic assessment form is available in Documents.',
-  },
-  {
-    title: 'Project proposal',
-    description: 'The available individual component proposals are listed in Documents.',
-  },
-  {
-    title: 'Progress Presentation 1',
-  },
-  {
-    title: 'Progress Presentation 2',
-  },
-  {
-    title: 'Final assessment',
-  },
-  {
-    title: 'Viva',
-  },
-]
+export default function Milestones({ selected, onSelect }: MilestonesProps) {
+  const timelineRef = useRef<HTMLOListElement>(null)
 
-export default function Milestones() {
-  const [selected, setSelected] = useState('all')
+  useEffect(() => {
+    const timeline = timelineRef.current
+    if (!timeline || selected !== 'all' || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const items = Array.from(timeline.querySelectorAll<HTMLElement>('.milestone-item'))
+    const context = gsap.context(() => {
+      timeline.classList.add('milestones-motion')
+
+      ScrollTrigger.create({
+        trigger: timeline,
+        start: 'top 65%',
+        end: 'bottom 60%',
+        onUpdate: ({ progress }) => timeline.style.setProperty('--timeline-progress', String(progress)),
+      })
+
+      items.forEach((item) => {
+        ScrollTrigger.create({
+          trigger: item,
+          start: 'top 82%',
+          onEnter: () => item.classList.add('is-visible'),
+          onEnterBack: () => item.classList.add('is-visible'),
+        })
+      })
+
+      // Keep cards visible when arriving through a deep link or browser scroll restoration.
+      items.forEach((item) => {
+        if (item.getBoundingClientRect().top < window.innerHeight * 0.82) {
+          item.classList.add('is-visible')
+        }
+      })
+    }, timeline)
+
+    return () => {
+      context.revert()
+      timeline.classList.remove('milestones-motion')
+      timeline.style.removeProperty('--timeline-progress')
+      items.forEach((item) => item.classList.remove('is-visible'))
+    }
+  }, [selected])
 
   return (
     <section className="milestones-section" id="milestones" aria-labelledby="milestones-title">
@@ -51,7 +70,7 @@ export default function Milestones() {
           <select
             id="milestone-select"
             value={selected}
-            onChange={(event) => setSelected(event.target.value)}
+            onChange={(event) => onSelect(event.target.value)}
           >
             <option value="all">All assessments</option>
             {milestones.map((milestone, index) => (
@@ -62,7 +81,7 @@ export default function Milestones() {
           </select>
         </div>
 
-        <ol className="milestones-timeline">
+        <ol className="milestones-timeline" ref={timelineRef}>
           {milestones.map((milestone, index) => (
             (selected === 'all' || selected === String(index)) && (
               <li

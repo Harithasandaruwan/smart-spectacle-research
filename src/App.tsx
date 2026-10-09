@@ -1,4 +1,5 @@
 import './index.css'
+import { useState } from 'react'
 
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
@@ -18,6 +19,8 @@ import Footer from './components/Footer'
 import SpectacleBackground from './components/three/SpectacleBackground'
 
 function App() {
+  const [selectedMilestone, setSelectedMilestone] = useState('all')
+
   return (
     <>
       <SpectacleBackground />
@@ -25,7 +28,7 @@ function App() {
         Skip to content
       </a>
 
-      <Navbar />
+      <Navbar onSelectMilestone={setSelectedMilestone} />
 
       <main id="main">
         <Hero />
@@ -37,7 +40,7 @@ function App() {
         <Methodology />
         <TechnologiesUsed />
         <ResearchComponents />
-        <Milestones />
+        <Milestones selected={selectedMilestone} onSelect={setSelectedMilestone} />
         <Documents />
         <PresentationSlides />
         <Team />
