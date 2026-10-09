@@ -25,7 +25,7 @@ function Hero() {
           <a className="button primary" href="#research">
             Explore our research
           </a>
-          <a className="button secondary" href="#downloads">
+          <a className="button secondary" href="#documents">
             View proposals
           </a>
         </div>

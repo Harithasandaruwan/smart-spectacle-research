@@ -1,5 +1,4 @@
 import ProductStage from './three/ProductStage'
-import Milestones from './Milestones'
 
 const researchSteps = [
   {
@@ -59,8 +58,6 @@ function Methodology() {
           </p>
         </div>
       </div>
-
-      <Milestones />
     </section>
   )
 }

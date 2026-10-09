@@ -25,7 +25,7 @@ main .hero, main .section-muted { background: transparent; }
 .spectacle-part-key { position: absolute; top: 20px; left: 24px; right: 24px; display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; color: #096b78; font-size: .72rem; }
 .spectacle-part-key b { margin-left: 5px; color: #526371; font-weight: 500; }
 /* Protect long prose when the very faint edge pose passes these sections. */
-#literature, #research-gap, #references, #downloads, #team { background: #ffffffed; }
+#literature, #research-gap, #research-problem, #research-objectives, #technologies-used, #references, #documents, #slides, #about-us, #contact-us { background: #ffffffed; }
 @media (max-width: 1000px) and (min-width: 801px) {
   .hero-layout { gap: 16px; }
   .hero h1 { font-size: 2.6rem; }

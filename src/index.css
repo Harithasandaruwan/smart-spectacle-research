@@ -111,18 +111,75 @@ p {
 .nav-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  gap: 10px 16px;
 }
 
-.nav-links a {
+.nav-links a,
+.domain-menu summary {
   color: #344b5a;
-  font-size: 0.9rem;
+  font-size: 0.84rem;
   font-weight: 600;
   text-decoration: none;
+  cursor: pointer;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.domain-menu summary:hover {
   text-decoration: underline;
+}
+
+.nav-toggle {
+  display: none;
+  padding: 9px 14px;
+  border: 1px solid #cbd9dd;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #096b78;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.domain-menu {
+  position: relative;
+}
+
+.domain-menu summary {
+  list-style: none;
+}
+
+.domain-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.domain-menu summary::after {
+  content: ' ▾';
+  color: #096b78;
+}
+
+.domain-links {
+  position: absolute;
+  top: calc(100% + 13px);
+  left: 0;
+  z-index: 20;
+  display: grid;
+  min-width: 230px;
+  padding: 9px;
+  border: 1px solid #dde5e9;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(23, 43, 58, 0.13);
+}
+
+.domain-links a {
+  padding: 7px 10px;
+  border-radius: 6px;
+}
+
+.domain-links a:hover,
+.domain-links a:focus-visible {
+  background: #eef6f6;
 }
 
 .hero {
@@ -299,6 +356,15 @@ p {
   gap: 12px;
 }
 
+.subsection-heading {
+  margin-top: 42px;
+}
+
+.placeholder-detail {
+  margin-bottom: 0;
+  color: #526371;
+}
+
 .download-item {
   display: flex;
   align-items: center;
@@ -386,24 +452,67 @@ p {
   border: 0;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1050px) {
   .navigation {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
+    margin-left: auto;
   }
 
   .nav-links {
-    gap: 10px 18px;
+    display: none;
+    flex-basis: 100%;
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    padding: 8px 0;
+    border-top: 1px solid #dde5e9;
+  }
+
+  .nav-links-open {
+    display: flex;
+    max-height: calc(100dvh - 80px);
+    overflow-y: auto;
+  }
+
+  .nav-links > a,
+  .domain-menu summary,
+  .domain-links a {
+    display: block;
+    padding: 10px 4px;
+  }
+
+  .domain-links {
+    position: static;
+    min-width: 0;
+    margin: 4px 0 8px 12px;
+    border: 0;
+    border-left: 2px solid #c7e1e2;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .domain-links a {
+    padding-left: 12px;
+  }
+
+  html {
+    scroll-padding-top: 90px;
+  }
+}
+
+@media (max-width: 800px) {
+  .navigation {
+    gap: 12px;
   }
 
   .three-columns {
     grid-template-columns: 1fr;
   }
 
-  html {
-    scroll-padding-top: 155px;
-  }
 }
 
 @media (max-width: 600px) {
@@ -562,19 +671,19 @@ p {
 }
 
 /* Team layout and photo sizes */
-#team .team-section-heading {
+#about-us .team-section-heading {
   max-width: 760px;
   margin: 0 auto 35px;
   text-align: center;
 }
 
-#team .team-profile-grid {
+#about-us .team-profile-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 24px;
 }
 
-#team .team-profile-card {
+#about-us .team-profile-card {
   position: relative;
   min-width: 0;
   padding: 16px;
@@ -583,7 +692,7 @@ p {
   background: #ffffff;
 }
 
-#team .team-profile-photo {
+#about-us .team-profile-photo {
   display: block;
   width: 100%;
   max-width: 100%;
@@ -594,36 +703,36 @@ p {
   border-radius: 18px;
 }
 
-#team .team-profile-details {
+#about-us .team-profile-details {
   padding: 18px 4px 4px;
 }
 
-#team .profile-name-row {
+#about-us .profile-name-row {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 8px;
 }
 
-#team .profile-name-row h3 {
+#about-us .profile-name-row h3 {
   margin-bottom: 8px;
   font-size: 1rem;
   overflow-wrap: anywhere;
 }
 
-#team .team-student-id {
+#about-us .team-student-id {
   margin-bottom: 8px;
   color: #096b78;
   font-size: 0.8rem;
   font-weight: 700;
 }
 
-#team .team-component-title {
+#about-us .team-component-title {
   margin-bottom: 0;
   font-size: 0.85rem;
 }
 
-#team .linkedin-link {
+#about-us .linkedin-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -634,15 +743,15 @@ p {
   color: #0a66c2;
 }
 
-#team .linkedin-link:hover {
+#about-us .linkedin-link:hover {
   background: #eaf3fc;
 }
 
-#team .team-profile-leader {
+#about-us .team-profile-leader {
   border: 2px solid #149447;
 }
 
-#team .team-leader-badge {
+#about-us .team-leader-badge {
   position: absolute;
   top: -15px;
   left: 50%;
@@ -657,17 +766,17 @@ p {
   white-space: nowrap;
 }
 
-#team .supervisor-heading {
+#about-us .supervisor-heading {
   margin-top: 60px;
 }
 
-#team .supervisor-profile-grid {
+#about-us .supervisor-profile-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 24px;
 }
 
-#team .supervisor-profile-card {
+#about-us .supervisor-profile-card {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -678,7 +787,7 @@ p {
   background: #ffffff;
 }
 
-#team .supervisor-profile-photo {
+#about-us .supervisor-profile-photo {
   display: block;
   flex: 0 0 72px;
   width: 72px;
@@ -689,18 +798,18 @@ p {
   border-radius: 14px;
 }
 
-#team .supervisor-profile-details {
+#about-us .supervisor-profile-details {
   flex: 1;
   min-width: 0;
 }
 
-#team .supervisor-profile-details h3 {
+#about-us .supervisor-profile-details h3 {
   margin-bottom: 6px;
   font-size: 1rem;
   overflow-wrap: anywhere;
 }
 
-#team .supervisor-profile-details p {
+#about-us .supervisor-profile-details p {
   margin-bottom: 0;
   color: #096b78;
   font-size: 0.75rem;
@@ -708,7 +817,7 @@ p {
   text-transform: uppercase;
 }
 
-#team .profile-photo-fallback {
+#about-us .profile-photo-fallback {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -719,30 +828,30 @@ p {
 }
 
 @media (max-width: 1000px) {
-  #team .team-profile-grid {
+  #about-us .team-profile-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: 32px;
   }
 }
 
 @media (max-width: 700px) {
-  #team .supervisor-profile-grid {
+  #about-us .supervisor-profile-grid {
     grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
-  #team .team-profile-grid {
+  #about-us .team-profile-grid {
     grid-template-columns: 1fr;
   }
 
-  #team .team-profile-card {
+  #about-us .team-profile-card {
     width: 100%;
     max-width: 320px;
     margin-inline: auto;
   }
 
-  #team .supervisor-profile-card {
+  #about-us .supervisor-profile-card {
     padding: 16px;
     gap: 12px;
   }
@@ -1044,6 +1153,35 @@ p {
   line-height: 1.7;
 }
 
+.milestone-picker {
+  display: grid;
+  gap: 6px;
+  width: min(100%, 360px);
+  margin: 0 auto 2.5rem;
+}
+
+.milestone-picker label {
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.milestone-picker select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #b9cdd1;
+  border-radius: 9px;
+  background: #ffffff;
+  color: #172b3a;
+  font: inherit;
+}
+
+.milestone-picker select:focus-visible,
+.nav-toggle:focus-visible,
+.domain-menu summary:focus-visible {
+  outline: 3px solid #096b78;
+  outline-offset: 3px;
+}
+
 .milestones-timeline {
   position: relative;
   display: grid;
@@ -1118,16 +1256,6 @@ p {
   transform: translate(-50%, -50%);
 }
 
-.milestone-marker-completed {
-  background: linear-gradient(145deg, #1bb4b4, #5369d8);
-  color: #fff;
-}
-
-.milestone-marker-in-progress {
-  background: #e9fbf9;
-  color: var(--milestone-teal);
-}
-
 .milestone-card-meta {
   display: flex;
   align-items: center;
@@ -1147,35 +1275,6 @@ p {
   letter-spacing: 0.1em;
 }
 
-.milestone-status {
-  display: inline-flex;
-  padding: 0.32rem 0.65rem;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font-size: 0.68rem;
-  font-weight: 800;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-.milestone-status-completed {
-  border-color: #a9eeea;
-  background: #e8fbfa;
-  color: #08747a;
-}
-
-.milestone-status-in-progress {
-  border-color: #b6e8e2;
-  background: #edfbf8;
-  color: #167c70;
-}
-
-.milestone-status-pending {
-  border-color: #f3dfa1;
-  background: #fff7dc;
-  color: #92500b;
-}
-
 .milestone-card h3 {
   margin: 0;
   color: var(--milestone-ink);
@@ -1188,6 +1287,19 @@ p {
   color: var(--milestone-muted);
   font-size: 0.92rem;
   line-height: 1.6;
+}
+
+.milestone-card .milestone-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e2e9ec;
+  color: #096b78;
+  font-size: 0.8rem;
+  font-weight: 700;
 }
 
 @media (max-width: 680px) {

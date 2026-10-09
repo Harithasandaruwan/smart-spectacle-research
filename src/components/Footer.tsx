@@ -4,14 +4,17 @@ const projectLinks = [
   { label: 'Research gap', href: '#research-gap' },
   { label: 'Research components', href: '#components' },
   { label: 'Methodology', href: '#methodology' },
-  { label: 'Downloads', href: '#downloads' },
-  { label: 'Team', href: '#team' },
+  { label: 'Milestones', href: '#milestones' },
+  { label: 'Documents', href: '#documents' },
+  { label: 'Slides', href: '#slides' },
+  { label: 'About us', href: '#about-us' },
   { label: 'References', href: '#references' },
+  { label: 'Contact us', href: '#contact-us' },
 ];
 
 export default function Footer() {
   return (
-    <footer className="project-footer" id="contact">
+    <footer className="project-footer" id="footer">
       <div className="footer-inner">
         <section className="footer-contact" aria-labelledby="footer-title">
           <p className="footer-eyebrow">RESEARCH PROJECT · R26-IT-134</p>
@@ -21,7 +24,7 @@ export default function Footer() {
           <p className="footer-intro">
             IoT-Based Spectacle for Indoor Navigation and Safety of Visually Impaired
           </p>
-          <a className="footer-team-link" href="#team">
+          <a className="footer-team-link" href="#about-us">
             Meet the research team <span aria-hidden="true">↗</span>
           </a>
         </section>

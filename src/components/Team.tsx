@@ -88,14 +88,14 @@ function LinkedInLink({ url, name }: LinkedInLinkProps) {
 function Team() {
   return (
     <section
-      id="team"
+      id="about-us"
       className="section"
       aria-labelledby="team-heading"
     >
       <div className="container">
         <div className="team-section-heading">
           <p className="eyebrow">Our researchers</p>
-          <h2 id="team-heading">Team members</h2>
+          <h2 id="team-heading">About us</h2>
 
           <p>
             B.Sc. (Hons) in Information Technology, specializing in
