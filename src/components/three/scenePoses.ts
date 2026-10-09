@@ -13,9 +13,10 @@ export const SECTION_POSES = [
   { id: 'home', pose: HOME_POSE },
   { id: 'research', pose: { ...HOME_POSE, anchor: 1, rx: .2, ry: 1.06, rz: 0, scale: 1, accent: .65 } },
   { id: 'literature', pose: { ...HOME_POSE, anchor: 2, ry: .8, scale: .65, opacity: .06 } },
-  { id: 'references', pose: { ...HOME_POSE, anchor: 3, ry: .6, scale: .6, opacity: .025 } },
+  { id: 'research-gap', pose: { ...HOME_POSE, anchor: 3, ry: .7, scale: .62, opacity: .045 } },
   { id: 'components', pose: { ...HOME_POSE, anchor: 4, rx: .3, ry: .4, rz: 0, scale: 1, explode: 1, accent: .35 } },
   { id: 'methodology', pose: { ...HOME_POSE, anchor: 5, rx: .22, ry: .65, rz: 0, scale: 1, accent: .6, pulse: 1 } },
   { id: 'downloads', pose: { ...HOME_POSE, anchor: 6, scale: .6, opacity: 0 } },
   { id: 'team', pose: { ...HOME_POSE, anchor: 7, scale: .6, opacity: 0 } },
+  { id: 'references', pose: { ...HOME_POSE, anchor: 8, ry: .6, scale: .6, opacity: .025 } },
 ]

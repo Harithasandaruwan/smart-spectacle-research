@@ -14,12 +14,12 @@ const memberProfiles: Record<string, MemberProfile> = {
   },
   IT22063014: {
     photo: '/images/team/aqeel.jpg',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/aqeel-nazar-299a08268',
     isLeader: false,
   },
   IT22153418: {
     photo: '/images/team/lakshika.jpg',
-    linkedin: '',
+    linkedin: 'https://www.linkedin.com/in/pramudi-lakshika',
     isLeader: false,
   },
   IT22234384: {
@@ -45,6 +45,6 @@ export const supervisors = [
     name: 'Prof. Anuradha Jayakody',
     role: 'Co-supervisor',
     photo: '/images/team/anuradha-jayakody.jpg',
-    linkedin: '',
+    linkedin: 'https://lk.linkedin.com/in/prof-anuradha-jayakody-19a42915',
   },
 ]

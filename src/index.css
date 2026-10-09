@@ -747,3 +747,500 @@ p {
     gap: 12px;
   }
 }
+
+/* Footer | Start */
+
+.project-footer {
+  --footer-bg: #07131e;
+  --footer-line: rgba(190, 218, 224, 0.15);
+  --footer-text: #f5fbfc;
+  --footer-muted: #aabac3;
+  --footer-accent: #4dd4c8;
+  background: var(--footer-bg);
+  color: var(--footer-text);
+  padding: clamp(3.5rem, 8vw, 7rem) 1.5rem 1.75rem;
+}
+
+.footer-inner {
+  width: min(100%, 1120px);
+  margin: 0 auto;
+}
+
+.footer-contact {
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+  text-align: center;
+}
+
+.footer-eyebrow,
+.footer-card-label {
+  margin: 0 0 1rem;
+  color: var(--footer-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.footer-contact h2 {
+  margin: 0;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+.footer-contact h2 span {
+  color: var(--footer-accent);
+}
+
+.footer-intro {
+  max-width: 620px;
+  margin: 1rem auto 1.4rem;
+  color: var(--footer-muted);
+  line-height: 1.7;
+}
+
+.footer-team-link,
+.footer-github {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--footer-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.footer-team-link {
+  padding: 0.75rem 1rem;
+  border: 1px solid rgba(77, 212, 200, 0.45);
+  border-radius: 999px;
+  color: var(--footer-accent);
+  transition: background-color 160ms ease, transform 160ms ease;
+}
+
+.footer-team-link:hover {
+  background: rgba(77, 212, 200, 0.1);
+  transform: translateY(-2px);
+}
+
+.footer-affiliation {
+  width: min(100%, 760px);
+  margin: 0 auto 3.2rem;
+  padding: clamp(1.25rem, 4vw, 2rem);
+  border: 1px solid var(--footer-line);
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.footer-affiliation-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.footer-card-label {
+  margin-bottom: 0.65rem;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+}
+
+.footer-affiliation h3 {
+  max-width: 480px;
+  margin: 0;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.35;
+}
+
+.footer-muted {
+  margin: 0.35rem 0 0;
+  color: var(--footer-muted);
+  font-size: 0.86rem;
+}
+
+.footer-location {
+  flex: 0 0 auto;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(77, 212, 200, 0.35);
+  border-radius: 999px;
+  color: var(--footer-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.footer-mentors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--footer-line);
+}
+
+.footer-mentor {
+  display: grid;
+  gap: 0.45rem;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--footer-line);
+  border-radius: 0.75rem;
+  background: rgba(4, 12, 22, 0.35);
+}
+
+.footer-mentor span {
+  color: var(--footer-accent);
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.footer-mentor strong {
+  font-size: 0.88rem;
+}
+
+.footer-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.25rem 2rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid var(--footer-line);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.25rem;
+}
+
+.footer-nav a {
+  color: var(--footer-muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: var(--footer-accent);
+}
+
+.footer-github {
+  padding: 0.65rem 0.85rem;
+  border: 1px solid var(--footer-line);
+  border-radius: 0.65rem;
+  background: rgba(255, 255, 255, 0.045);
+  font-size: 0.78rem;
+  white-space: nowrap;
+  transition: border-color 150ms ease, background-color 150ms ease;
+}
+
+.footer-github:hover {
+  border-color: rgba(77, 212, 200, 0.5);
+  background: rgba(77, 212, 200, 0.08);
+}
+
+.footer-github svg {
+  width: 1rem;
+  height: 1rem;
+  color: var(--footer-accent);
+}
+
+.footer-copyright {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #82939e;
+  font-size: 0.68rem;
+  letter-spacing: 0.035em;
+  text-align: center;
+}
+
+.project-footer a:focus-visible {
+  outline: 3px solid var(--footer-accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 640px) {
+  .project-footer {
+    padding-inline: 1rem;
+  }
+
+  .footer-contact {
+    margin-bottom: 2.5rem;
+  }
+
+  .footer-affiliation-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer-mentors {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-bottom {
+    grid-template-columns: 1fr;
+    justify-items: start;
+  }
+
+  .footer-copyright {
+    grid-column: auto;
+    text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-team-link,
+  .footer-github,
+  .footer-nav a {
+    transition: none;
+  }
+}
+
+/* Footer | End */
+
+/* ===== Research project milestones | Start ===== */
+
+.milestones-section {
+  --milestone-ink: #1b2936;
+  --milestone-muted: #667581;
+  --milestone-teal: #168b91;
+  --milestone-line: #dbe5e8;
+  padding: clamp(4rem, 8vw, 7rem) 1.25rem;
+  background: #f7fafb;
+  color: var(--milestone-ink);
+  scroll-margin-top: 90px;
+}
+
+.milestones-container {
+  width: min(100%, 1080px);
+  margin-inline: auto;
+}
+
+.milestones-heading {
+  max-width: 700px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.milestones-eyebrow {
+  margin: 0 0 0.75rem;
+  color: var(--milestone-teal);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.milestones-heading h2 {
+  margin: 0;
+  color: var(--milestone-ink);
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.milestones-heading > p:last-child {
+  margin: 1rem auto 0;
+  color: var(--milestone-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.milestones-timeline {
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.milestones-timeline::before {
+  position: absolute;
+  top: 1.25rem;
+  bottom: 1.25rem;
+  left: 50%;
+  width: 3px;
+  border-radius: 99px;
+  background: linear-gradient(#32c6bf 0%, #7a78dc 58%, #dbe5e8 58%, #dbe5e8 100%);
+  content: '';
+  transform: translateX(-50%);
+}
+
+.milestone-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 145px;
+  align-items: center;
+}
+
+.milestone-card {
+  width: min(100% - 2.5rem, 465px);
+  padding: 1.4rem 1.55rem;
+  border: 1px solid #e2e9ec;
+  border-radius: 1.4rem;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(25, 48, 61, 0.06);
+  transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.milestone-card:hover {
+  box-shadow: 0 14px 32px rgba(25, 48, 61, 0.1);
+  transform: translateY(-3px);
+}
+
+.milestone-left .milestone-card {
+  grid-column: 1;
+  justify-self: end;
+  text-align: right;
+}
+
+.milestone-right .milestone-card {
+  grid-column: 2;
+  justify-self: start;
+}
+
+.milestone-marker {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  place-items: center;
+  border: 4px solid #f7fafb;
+  border-radius: 0.95rem;
+  background: #fff;
+  color: #91a0aa;
+  box-shadow: 0 4px 14px rgba(30, 65, 83, 0.15);
+  font-size: 1.2rem;
+  font-weight: 800;
+  transform: translate(-50%, -50%);
+}
+
+.milestone-marker-completed {
+  background: linear-gradient(145deg, #1bb4b4, #5369d8);
+  color: #fff;
+}
+
+.milestone-marker-in-progress {
+  background: #e9fbf9;
+  color: var(--milestone-teal);
+}
+
+.milestone-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.milestone-left .milestone-card-meta {
+  justify-content: flex-end;
+}
+
+.milestone-number {
+  color: #82919d;
+  font-size: 0.67rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.milestone-status {
+  display: inline-flex;
+  padding: 0.32rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.milestone-status-completed {
+  border-color: #a9eeea;
+  background: #e8fbfa;
+  color: #08747a;
+}
+
+.milestone-status-in-progress {
+  border-color: #b6e8e2;
+  background: #edfbf8;
+  color: #167c70;
+}
+
+.milestone-status-pending {
+  border-color: #f3dfa1;
+  background: #fff7dc;
+  color: #92500b;
+}
+
+.milestone-card h3 {
+  margin: 0;
+  color: var(--milestone-ink);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.35;
+}
+
+.milestone-card p {
+  margin: 0.55rem 0 0;
+  color: var(--milestone-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 680px) {
+  .milestones-section {
+    padding-inline: 1rem;
+  }
+
+  .milestones-heading {
+    margin-bottom: 2.5rem;
+    text-align: left;
+  }
+
+  .milestones-timeline {
+    gap: 1rem;
+  }
+
+  .milestones-timeline::before {
+    left: 1rem;
+  }
+
+  .milestone-item {
+    display: block;
+    min-height: auto;
+    padding-left: 3rem;
+  }
+
+  .milestone-marker {
+    top: 1.35rem;
+    left: 1rem;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 0.75rem;
+    transform: translate(-50%, 0);
+  }
+
+  .milestone-card,
+  .milestone-left .milestone-card,
+  .milestone-right .milestone-card {
+    width: 100%;
+    padding: 1.1rem;
+    text-align: left;
+  }
+
+  .milestone-left .milestone-card-meta,
+  .milestone-card-meta {
+    justify-content: space-between;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .milestone-card {
+    transition: none;
+  }
+}
+
+/* ===== Research project milestones | END ===== */
