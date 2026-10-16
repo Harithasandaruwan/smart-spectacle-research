@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Research Domain Details: Literature Survey, Research Gap, Problem Statement, Objectives, Methodology, and Technologies Used. SLIIT CDAP R26-IT-134.">
+  <title>Domain Details | Smart Spectacle | R26-IT-134</title>
+  <link rel="icon" type="image/svg+xml" href="images/smart-spectacle.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- Header & Navigation -->
+  <header class="site-header">
+    <nav class="container navigation" aria-label="Main navigation">
+      <a class="brand" href="index.html">
+        <img src="images/smart-spectacle.svg" alt="Smart Spectacle Logo" class="brand-icon">
+        <div class="brand-text">
+          Smart Spectacle
+          <span>R26-IT-134 · SLIIT</span>
+        </div>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Toggle navigation">
+        ☰ Menu
+      </button>
+
+      <div class="nav-links">
+        <a class="nav-link" href="index.html">Home</a>
+
+        <div class="nav-item nav-dropdown">
+          <a class="nav-link dropdown-toggle active" href="domain.html" aria-haspopup="true" aria-expanded="false">
+            Domain
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="domain.html#literature">Literature Survey</a>
+            <a class="dropdown-item" href="domain.html#research-gap">Research Gap</a>
+            <a class="dropdown-item" href="domain.html#research-problem">Research Problem</a>
+            <a class="dropdown-item" href="domain.html#research-objectives">Research Objectives</a>
+            <a class="dropdown-item" href="domain.html#methodology">Methodology</a>
+            <a class="dropdown-item" href="domain.html#technologies-used">Technologies Used</a>
+          </div>
+        </div>
+
+        <div class="nav-item nav-dropdown">
+          <a class="nav-link dropdown-toggle" href="milestones.html" aria-haspopup="true" aria-expanded="false">
+            Milestones
+          </a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" href="milestones.html">All Checkpoints</a>
+            <a class="dropdown-item" href="milestones.html#milestone-1">Project Proposal <span class="dropdown-badge">6%</span></a>
+            <a class="dropdown-item" href="milestones.html#milestone-2">Progress Presentation 1 <span class="dropdown-badge">15%</span></a>
+            <a class="dropdown-item" href="milestones.html#milestone-3">Progress Presentation 2 <span class="dropdown-badge">18%</span></a>
+            <a class="dropdown-item" href="milestones.html#milestone-4">Final Assessment <span class="dropdown-badge">40%</span></a>
+            <a class="dropdown-item" href="milestones.html#milestone-5">Viva &amp; Defense <span class="dropdown-badge">20%</span></a>
+          </div>
+        </div>
+
+        <a class="nav-link" href="documents.html">Documents</a>
+        <a class="nav-link" href="presentations.html">Slides of past presentations</a>
+        <a class="nav-link" href="about.html">About us</a>
+        <a class="nav-link" href="contact.html">Contact us</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header Banner -->
+  <div class="page-header">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <span>Domain</span>
+      </nav>
+      <span class="eyebrow eyebrow-badge">Research Background &amp; Framework</span>
+      <h1>Project Research Domain</h1>
+      <p class="page-header-lead">
+        Comprehensive analysis of existing literature, technological gaps, research problems, formalized objectives, iterative methodology, and hardware-software stack.
+      </p>
+    </div>
+  </div>
+
+  <!-- Sticky In-Page Navigation Bar -->
+  <div class="subnav-tabs">
+    <div class="container">
+      <ul class="subnav-list">
+        <li><a href="#literature">Literature Survey</a></li>
+        <li><a href="#research-gap">Research Gap</a></li>
+        <li><a href="#research-problem">Research Problem</a></li>
+        <li><a href="#research-objectives">Research Objectives</a></li>
+        <li><a href="#methodology">Methodology</a></li>
+        <li><a href="#technologies-used">Technologies Used</a></li>
+        <li><a href="#references">Academic References</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main id="main">
+    <!-- 1. Literature Survey (Slide 10) -->
+    <section id="literature" class="section">
+      <div class="container">
+        <span class="eyebrow">Academic Foundation</span>
+        <h2>1. Literature Survey</h2>
+        <p class="section-intro">
+          A systematic review of current paradigms in assistive mobility reveals diverse techniques for indoor localization, obstacle perception, and feedback systems. These studies establish the theoretical foundation for our multi-modal wearable platform.
+        </p>
+
+        <div class="grid two-columns" style="margin-bottom: 35px;">
+          <article class="card">
+            <h3>Indoor Navigation &amp; Positioning Approaches</h3>
+            <p>
+              Plikynas et al. <a href="#ref-4">[4]</a> conducted an extensive taxonomy of indoor navigation technologies mapped against the sensory needs of visually impaired individuals. López-de-Ipiña et al. <a href="#ref-8">[8]</a> validated marker-based indoor navigation utilizing RFID tags and QR codes. While effective in structured environments, their utility degrades in unprepared architectures. Chen et al. <a href="#ref-11">[11]</a> investigated wearable semantic visual SLAM, demonstrating accurate trajectory estimation but demanding substantial computational and battery overhead.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Wearable Perception &amp; Object Detection</h3>
+            <p>
+              Y. Chen et al. <a href="#ref-2">[2]</a> presented a wearable assistive system combining quantized YOLOv3 object detection with stereo depth measurement and haptic tactile feedback. Redmon et al. <a href="#ref-3">[3]</a> established the foundational unified real-time YOLO framework. Subsequent research demonstrated that integrating distance sensors (such as LiDAR <a href="#ref-1">[1]</a>) significantly improves spatial awareness over monocular 2D vision alone.
+            </p>
+          </article>
+        </div>
+
+        <h3 style="margin-bottom: 16px;">Comparative Matrix of Key Literature</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 18px;">
+          The table below contrasts state-of-the-art research papers, their core methodologies, key contributions, and specific design considerations for our smart spectacle.
+        </p>
+
+        <div class="literature-table-wrapper" tabindex="0" role="region" aria-label="Literature Comparison Table">
+          <table class="literature-table">
+            <caption>Table 1: State-of-the-Art Literature Comparison for Wearable Assistive Navigation</caption>
+            <thead>
+              <tr>
+                <th scope="col">Study &amp; Author</th>
+                <th scope="col">Technological Approach</th>
+                <th scope="col">Key Contribution</th>
+                <th scope="col">Relevance to Our Project</th>
+                <th scope="col">Design Consideration</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">
+                  Plikynas et al. (2020)
+                  <span class="study-category">Sensors Journal Review</span>
+                  <a href="#ref-4">[4]</a>
+                </th>
+                <td>Comprehensive review of RF, acoustic, optical, and sensor-based indoor systems.</td>
+                <td>Synthesized user requirements and established criteria for assistive accuracy and latency.</td>
+                <td>Directly guides our selection of multi-sensor fusion (IMU + Optical + LiDAR).</td>
+                <td>Literature review only; provides no physical hardware or runtime firmware benchmark.</td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  López-de-Ipiña et al. (2011)
+                  <span class="study-category">Marker-Based Assistance</span>
+                  <a href="#ref-8">[8]</a>
+                </th>
+                <td>RFID and QR code marker detection via smartphone cameras in retail spaces.</td>
+                <td>Demonstrated high-confidence location identification in prepared environments.</td>
+                <td>Informs our visual landmark module for indoor landmark detection.</td>
+                <td>Strict dependency on pre-installed environmental RFID tags or visual markers.</td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  Z. Chen et al. (2021)
+                  <span class="study-category">Wearable Visual SLAM</span>
+                  <a href="#ref-11">[11]</a>
+                </th>
+                <td>Semantic visual simultaneous localization and mapping on mobile processors.</td>
+                <td>Achieved high localization precision with semantic object point cloud mapping.</td>
+                <td>Demonstrates the viability of visual odometry in indoor environments.</td>
+                <td>Demands heavy GPU compute; requires adaptation to low-power edge microcontrollers.</td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  Y. Chen et al. (2023)
+                  <span class="study-category">Perception &amp; Tactile Feedback</span>
+                  <a href="#ref-2">[2]</a>
+                </th>
+                <td>Quantized YOLOv3 object detector paired with stereo camera and tactile belt.</td>
+                <td>Real-time edge obstacle perception with tactile directional guidance.</td>
+                <td>Directly informs model quantization and multi-sensor obstacle prioritization.</td>
+                <td>Utilized specialized neural accelerators; lacks positioning and remote caregiver alerts.</td>
+              </tr>
+              <tr>
+                <th scope="row">
+                  Redmon et al. (2016)
+                  <span class="study-category">Foundational YOLO</span>
+                  <a href="#ref-3">[3]</a>
+                </th>
+                <td>Unified, single-stage deep neural network for real-time bounding box regression.</td>
+                <td>Enabled high frame-rate object detection suitable for dynamic scenes.</td>
+                <td>Underpins our danger detection architecture for recognizing obstacles and stairs.</td>
+                <td>Standalone detection does not provide metric distance or inertial positioning.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="notice">
+          <strong>Implications for the Smart Spectacle Prototype</strong>
+          <p>
+            The literature proves that relying solely on a single sensing modality (e.g., vision alone or ultrasound alone) fails under diverse indoor lighting and varying obstacle geometries. Our project bridges this by combining optical vision, micro-LiDAR, and 6-axis inertial tracking into a single unified edge system.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Research Gap (Slide 10) -->
+    <section id="research-gap" class="section section-muted">
+      <div class="container">
+        <span class="eyebrow">Critical Deficiencies in Existing Systems</span>
+        <h2>2. Research Gap</h2>
+        <p class="section-intro">
+          While isolated solutions exist for object detection or RFID-based navigation, a comprehensive analysis highlights several critical research gaps in current assistive wearables.
+        </p>
+
+        <div class="grid three-columns">
+          <article class="card">
+            <h3>Infrastructure Independence</h3>
+            <p>
+              Most existing indoor positioning systems require dense physical beacons, Wi-Fi fingerprint databases, or pre-mapped QR codes. When entering unmapped buildings, these systems fail completely. There is a lack of lightweight, offline dead-reckoning architectures that function reliably without prior setup.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Edge Compute vs. Power Constraints</h3>
+            <p>
+              Complex visual SLAM algorithms demand high-performance GPU hardware that is too heavy and power-hungry for continuous spectacle-mounted use. Existing research rarely balances real-time hazard detection with a lightweight, wearable form factor operating on low battery capacity.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Disconnection Between User &amp; Guardian</h3>
+            <p>
+              Assistive wearables commonly focus solely on localized alerts, completely ignoring remote caregiver awareness. When a visually impaired person experiences a severe fall, medical distress, or disorientation, existing devices provide no automated telemetry to emergency contacts.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice">
+          <strong>Focus of Our Investigation</strong>
+          <p>
+            Our project directly fills this gap by developing an integrated IoT-based smart spectacle that performs offline dead-reckoning positioning and edge vision hazard detection locally, while establishing an asynchronous telemetry bridge to a remote guardian whenever connectivity is present.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Research Problem (Slide 10) -->
+    <section id="research-problem" class="section">
+      <div class="container">
+        <span class="eyebrow">Problem Statement</span>
+        <h2>3. Research Problem</h2>
+        <p class="section-intro">
+          According to the World Health Organization (WHO) <a href="#ref-5">[5]</a>, over 2.2 billion individuals globally live with near or distance vision impairment. Indoor mobility remains their most persistent daily challenge.
+        </p>
+
+        <div class="grid two-columns">
+          <article class="card">
+            <h3>The Environmental &amp; Physical Dilemma</h3>
+            <p>
+              Navigating unfamiliar indoor complexes (e.g., academic buildings, hospitals, transport stations) is fraught with hazards:
+            </p>
+            <ul style="padding-left: 20px; color: var(--text-muted); margin-top: 12px;">
+              <li>Absence of GPS satellite signals due to structural wall attenuation.</li>
+              <li>Overhead hazards, half-open doors, and stairs that traditional canes cannot sense early.</li>
+              <li>Dynamic moving hazards such as passing pedestrians and trolleys.</li>
+              <li>High cognitive load when interpreting ambiguous tactile or audio notifications.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Core Research Questions</h3>
+            <p>
+              To solve this multi-dimensional challenge, our research investigates:
+            </p>
+            <ul style="padding-left: 20px; color: var(--text-muted); margin-top: 12px;">
+              <li><strong>RQ1:</strong> How can multi-sensor data (LiDAR + IMU + Optical) be fused efficiently on an energy-constrained wearable spectacle?</li>
+              <li><strong>RQ2:</strong> Can accurate indoor trajectory tracking be sustained offline through dead-reckoning and landmark cues?</li>
+              <li><strong>RQ3:</strong> How can edge AI models detect common indoor hazards with sub-100ms latency on low-power hardware?</li>
+              <li><strong>RQ4:</strong> How can remote caregiver monitoring and emergency fall alerts be integrated without sacrificing battery life?</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Research Objectives (Slide 10) -->
+    <section id="research-objectives" class="section section-muted">
+      <div class="container">
+        <span class="eyebrow">Project Goals</span>
+        <h2>4. Research Objectives</h2>
+        <p class="section-intro">
+          The overarching goal of the project is to develop and evaluate a cost-effective, dependable assistive smart spectacle system that enhances independent indoor mobility and security.
+        </p>
+
+        <div class="grid two-columns">
+          <article class="card">
+            <span class="component-badge">Obj 1</span>
+            <h3>Wearable Hardware &amp; Sensor Bus</h3>
+            <p>
+              Design, 3D-print, and evaluate an ergonomic spectacle frame housing the TF-Luna LiDAR module, optical camera, and 6-axis IMU. Establish an efficient I2C/UART bus architecture delivering low-latency audio cues via a non-intrusive sound synthesizer.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="component-badge">Obj 2</span>
+            <h3>Offline Hybrid Indoor Positioning</h3>
+            <p>
+              Formulate an offline positioning framework combining IMU step and heading tracking (dead-reckoning) with computer vision landmark recognition, minimizing cumulative drift to within &plusmn;0.5 meters over typical indoor journeys.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="component-badge">Obj 3</span>
+            <h3>Remote Guardian &amp; Safety Telemetry</h3>
+            <p>
+              Build a secure cloud/mobile guardian ecosystem that continuously receives telemetry, automatically detects impacts/falls, monitors prolonged inactivity, and sends real-time emergency push notifications with location data.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="component-badge">Obj 4</span>
+            <h3>Edge Vision Danger Detection</h3>
+            <p>
+              Train, quantize, and deploy a custom lightweight neural network capable of classifying indoor obstacles, downward staircases, and drop hazards with &gt;85% mAP, fused with LiDAR distance measurements for prioritized acoustic alerts.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Methodology (Slide 10) -->
+    <section id="methodology" class="section">
+      <div class="container">
+        <span class="eyebrow">Research Approach</span>
+        <h2>5. Proposed Methodology</h2>
+        <p class="section-intro">
+          The research follows the <strong>Design Science Research Methodology (DSRM)</strong>, progressing through four iterative phases from theoretical formulation to controlled experimental evaluation.
+        </p>
+
+        <div class="grid four-columns">
+          <article class="card">
+            <span class="eyebrow">Phase 01</span>
+            <h3>Requirement Analysis &amp; Data Sourcing</h3>
+            <p>
+              Conduct literature analysis, extract user accessibility guidelines, and curate an annotated image dataset of typical indoor hazards (staircases, low walls, doors, obstacles).
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Phase 02</span>
+            <h3>Component Architecture &amp; Modeling</h3>
+            <p>
+              Independently engineer the 4 modules: 3D hardware chassis, dead-reckoning algorithm, guardian cloud API, and quantized object detection pipeline.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Phase 03</span>
+            <h3>System Integration &amp; Sensor Fusion</h3>
+            <p>
+              Synchronize sensor streams on the edge microcontroller. Implement EKF sensor fusion, distance-priority thresholding, and acoustic alert arbitration.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="eyebrow">Phase 04</span>
+            <h3>Empirical Testing &amp; Validation</h3>
+            <p>
+              Execute structured benchmark trials in controlled indoor environments at SLIIT to record latency, accuracy, positioning drift, battery endurance, and usability.
+            </p>
+          </article>
+        </div>
+
+        <div class="notice">
+          <strong>Local Edge Independence vs. Cloud Synchronization</strong>
+          <p>
+            In our architecture, life-safety functions (obstacle avoidance, dead reckoning, acoustic guidance) run 100% locally on the wearable frame with zero network latency. Cloud communication is used exclusively for non-blocking telemetry updates to the guardian application.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Technologies Used (Slide 10) -->
+    <section id="technologies-used" class="section section-muted">
+      <div class="container">
+        <span class="eyebrow">Engineering Stack</span>
+        <h2>6. Technologies Used</h2>
+        <p class="section-intro">
+          The project utilizes a cohesive selection of embedded hardware components, computer vision frameworks, and telemetry protocols optimized for power efficiency and responsiveness.
+        </p>
+
+        <div class="grid three-columns">
+          <article class="card">
+            <h3>Embedded Hardware</h3>
+            <ul style="padding-left: 20px; color: var(--text-muted); margin-top: 12px;">
+              <li><strong>Microcontroller:</strong> ESP32-S3 Dual-Core Xtensa LX7 (Wi-Fi + BLE 5.0)</li>
+              <li><strong>Distance Sensor:</strong> Benewake TF-Luna Micro-LiDAR (0.2m - 8m range)</li>
+              <li><strong>Inertial Sensor:</strong> MPU-6050 6-Axis Gyroscope &amp; Accelerometer</li>
+              <li><strong>Optical Sensor:</strong> OV2640 2MP Camera Module</li>
+              <li><strong>Audio:</strong> Bone-conduction transducer / Piezo acoustic buzzer</li>
+              <li><strong>Battery:</strong> 3.7V 1200mAh Lithium Polymer with TP4056 BMS</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Machine Learning &amp; Vision</h3>
+            <ul style="padding-left: 20px; color: var(--text-muted); margin-top: 12px;">
+              <li><strong>Detection Model:</strong> Quantized YOLOv8-Nano (INT8 precision)</li>
+              <li><strong>Vision Library:</strong> OpenCV &amp; Edge Impulse SDK</li>
+              <li><strong>Training Framework:</strong> PyTorch &amp; Google Colab GPU</li>
+              <li><strong>Feature Extraction:</strong> ORB / FAST corner detection for landmark matching</li>
+              <li><strong>Filtering:</strong> Extended Kalman Filter (EKF) for sensor fusion</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3>Guardian Cloud &amp; Mobile</h3>
+            <ul style="padding-left: 20px; color: var(--text-muted); margin-top: 12px;">
+              <li><strong>Backend Service:</strong> Node.js runtime with Express &amp; WebSocket</li>
+              <li><strong>Messaging Protocol:</strong> MQTT / HTTPS REST API</li>
+              <li><strong>Guardian Dashboard:</strong> Responsive HTML5, CSS3, Vanilla JS</li>
+              <li><strong>Telemetry Database:</strong> Firebase Realtime Database / MongoDB</li>
+              <li><strong>Alerts:</strong> Push Notifications &amp; automated SMS fallback</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Academic References & Citations -->
+    <section id="references" class="section">
+      <div class="container">
+        <span class="eyebrow">Academic Citations</span>
+        <h2>Academic References</h2>
+        <p class="section-intro">
+          The numbered citations below correspond to references cited throughout the Literature Survey and Domain sections.
+        </p>
+
+        <ol class="reference-list">
+          <li id="ref-1" class="reference-item">
+            <p>
+              R. O’Keeffe, S. Gnecchi, S. Buckley, C. O’Murchu, A. Mathewson, S. Lesecq, and J. Foucault, “Long Range LiDAR Characterisation for Obstacle Detection for use by the Visually Impaired and Blind,” <em>2018 IEEE 68th Electronic Components and Technology Conference (ECTC)</em>, pp. 533–538, 2018.
+            </p>
+            <a href="https://doi.org/10.1109/ECTC.2018.00084" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-2" class="reference-item">
+            <p>
+              Y. Chen, J. Shen, and H. Sawada, “A wearable assistive system for the visually impaired using object detection, distance measurement and tactile presentation,” <em>Intelligence &amp; Robotics</em>, vol. 3, no. 3, pp. 420–435, 2023.
+            </p>
+            <a href="https://doi.org/10.20517/ir.2023.24" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-3" class="reference-item">
+            <p>
+              J. Redmon, S. Divvala, R. Girshick, and A. Farhadi, “You Only Look Once: Unified, Real-Time Object Detection,” <em>2016 IEEE Conference on Computer Vision and Pattern Recognition (CVPR)</em>, 2016.
+            </p>
+            <a href="https://arxiv.org/abs/1506.02640" target="_blank" rel="noopener noreferrer">View arXiv Paper ↗</a>
+          </li>
+
+          <li id="ref-4" class="reference-item">
+            <p>
+              D. Plikynas, A. Žvironas, A. Budrionis, and M. Gudauskis, “Indoor Navigation Systems for Visually Impaired Persons: Mapping the Features of Existing Technologies to User Needs,” <em>Sensors</em>, vol. 20, no. 3, article 636, 2020.
+            </p>
+            <a href="https://doi.org/10.3390/s20030636" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-5" class="reference-item">
+            <p>
+              World Health Organization (WHO), “Blindness and vision impairment,” <em>WHO Fact Sheet</em>, updated 2026.
+            </p>
+            <a href="https://www.who.int/news-room/fact-sheets/detail/blindness-and-visual-impairment" target="_blank" rel="noopener noreferrer">View WHO Fact Sheet ↗</a>
+          </li>
+
+          <li id="ref-6" class="reference-item">
+            <p>
+              K. Swathi, P. Gayathri, D. Manasa, G. Pavani, and B. Likhitha, “Smart Glasses for Visually Impaired People Using IoT,” <em>International Research Journal on Advanced Engineering and Management (IRJAEM)</em>, vol. 2, no. 5, pp. 1390–1394, 2024.
+            </p>
+            <a href="https://doi.org/10.47392/IRJAEM.2024.0191" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-7" class="reference-item">
+            <p>
+              R. Velázquez, “Wearable Assistive Devices for the Blind,” in <em>Wearable and Autonomous Biomedical Devices and Systems for Smart Environment</em>, Lecture Notes in Electrical Engineering, vol. 75, Springer, pp. 331–349, 2010.
+            </p>
+            <a href="https://doi.org/10.1007/978-3-642-15687-8_17" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-8" class="reference-item">
+            <p>
+              D. López-de-Ipiña, T. Lorido, and U. López, “Indoor Navigation and Product Recognition for Blind People Assisted Shopping,” <em>Ambient Assisted Living, IWAAL 2011, Lecture Notes in Computer Science</em>, vol. 6693, pp. 33–40, 2011.
+            </p>
+            <a href="https://doi.org/10.1007/978-3-642-21303-8_5" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-9" class="reference-item">
+            <p>
+              J.-Y. Lin et al., “Smart Glasses Application System for Visually Impaired People Based on Deep Learning,” <em>2020 Indo–Taiwan 2nd International Conference on Computing, Analytics and Networks (Indo-Taiwan ICAN)</em>, 2020.
+            </p>
+            <a href="https://doi.org/10.1109/Indo-TaiwanICAN48429.2020.9181366" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-10" class="reference-item">
+            <p>
+              D. V. Kumar et al., “Real-Time Object Recognition with Voice Feedback for Visually Impaired Based on Raspberry Pi,” <em>2024 2nd International Conference on Device Intelligence, Computing and Communication Technologies (DICCT)</em>, 2024.
+            </p>
+            <a href="https://ieeexplore.ieee.org/document/10533162/" target="_blank" rel="noopener noreferrer">View IEEE Document ↗</a>
+          </li>
+
+          <li id="ref-11" class="reference-item">
+            <p>
+              Z. Chen, X. Liu, M. Kojima, Q. Huang, and T. Arai, “A Wearable Navigation Device for Visually Impaired People Based on the Real-Time Semantic Visual SLAM System,” <em>Sensors</em>, vol. 21, no. 4, article 1536, 2021.
+            </p>
+            <a href="https://doi.org/10.3390/s20041536" target="_blank" rel="noopener noreferrer">View Source DOI ↗</a>
+          </li>
+
+          <li id="ref-12" class="reference-item">
+            <p>
+              Benewake (Beijing) Co., Ltd., “TF-Luna LiDAR Module User Manual,” Manufacturer Technical Documentation, 2023.
+            </p>
+            <a href="https://en.benewake.com/DataDownload/index_pid_20_lcid_21.html" target="_blank" rel="noopener noreferrer">View Technical Manual ↗</a>
+          </li>
+
+          <li id="ref-13" class="reference-item">
+            <p>
+              A. Radford, J. W. Kim, T. Xu, G. Brockman, C. McLeavey, and I. Sutskever, “Robust Speech Recognition via Large-Scale Weak Supervision,” <em>Proceedings of the 40th International Conference on Machine Learning (ICML)</em>, PMLR, vol. 202, pp. 28492–28518, 2023.
+            </p>
+            <a href="https://proceedings.mlr.press/v202/radford23a.html" target="_blank" rel="noopener noreferrer">View PMLR Paper ↗</a>
+          </li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- Consistent Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>Smart Spectacle · R26-IT-134</h3>
+          <p>
+            IoT-Based Spectacle for Indoor Navigation and Safety of Visually Impaired. An undergraduate research project conducted at the Sri Lanka Institute of Information Technology (SLIIT).
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="domain.html">Domain Details</a></li>
+            <li><a href="milestones.html">Project Milestones</a></li>
+            <li><a href="documents.html">Documentation Center</a></li>
+            <li><a href="presentations.html">Presentation Slides</a></li>
+            <li><a href="about.html">Research Team &amp; Supervisors</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Academic Guidance</h4>
+          <ul class="footer-links">
+            <li><strong>Supervisor:</strong><br><a href="about.html#supervisors">Mr. Ravi Supunya</a></li>
+            <li style="margin-top: 8px;"><strong>Co-Supervisor:</strong><br><a href="about.html#supervisors">Prof. Anuradha Jayakody</a></li>
+            <li style="margin-top: 8px;"><strong>Institution:</strong><br>SLIIT Faculty of Computing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Smart Spectacle Research Project (R26-IT-134) · SLIIT. All rights reserved.</p>
+        <a href="https://github.com/Harithasandaruwan/Indoor-Navigation.git" target="_blank" rel="noopener noreferrer">View GitHub Repository ↗</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
