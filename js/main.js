@@ -107,39 +107,58 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // --- 4. General Email Template / Contact Form (Slide 15 Guideline) ---
+  // --- 4. Contact email template ---
   const contactForm = document.getElementById('contact-form');
   const formFeedback = document.getElementById('form-feedback');
-  const mailtoBtn = document.getElementById('mailto-btn');
+  const copyTemplateBtn = document.getElementById('copy-template');
 
   if (contactForm) {
+    const recipients = [
+      'IT22074690@my.sliit.lk',
+      'IT22153418@my.sliit.lk',
+      'IT22234384@my.sliit.lk',
+      'IT22063014@my.sliit.lk'
+    ];
+
+    function showContactFeedback(message, type) {
+      if (!formFeedback) return;
+      formFeedback.textContent = message;
+      formFeedback.className = `form-feedback ${type}`;
+    }
+
+    function getDraft() {
+      if (!contactForm.reportValidity()) return null;
+      const name = document.getElementById('sender-name').value.trim();
+      const email = document.getElementById('sender-email').value.trim();
+      const subject = document.getElementById('sender-subject').value.trim();
+      const message = document.getElementById('sender-message').value.trim();
+      if (!name || !email || !subject || !message) {
+        showContactFeedback('Please complete every field before creating your email.', 'error');
+        return null;
+      }
+      return {
+        subject,
+        body: `Dear Smart Spectacle Research Team,\n\n${message}\n\nKind regards,\n${name}\n${email}`
+      };
+    }
+
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const name = document.getElementById('sender-name')?.value.trim() || '';
-      const email = document.getElementById('sender-email')?.value.trim() || '';
-      const subject = document.getElementById('sender-subject')?.value.trim() || 'Smart Spectacle Project Inquiry';
-      const category = document.getElementById('sender-category')?.value || 'General Inquiry';
-      const message = document.getElementById('sender-message')?.value.trim() || '';
+      const draft = getDraft();
+      if (!draft) return;
+      const mailto = `mailto:${recipients.join(',')}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`;
+      window.location.href = mailto;
+      showContactFeedback('Your email app should open with the message ready to send.', 'success');
+    });
 
-      if (!name || !email || !message) {
-        alert('Please fill in your Name, Email, and Message.');
-        return;
-      }
-
-      if (formFeedback) {
-        formFeedback.className = 'form-feedback success';
-        formFeedback.innerHTML = `
-          <strong>Thank you, ${name}!</strong><br>
-          Your inquiry regarding <em>"${subject}"</em> (${category}) has been drafted successfully.<br>
-          <span style="font-size: 0.85rem; color: #116a57;">You can also click the button below to send this directly via your default email application.</span>
-        `;
-      }
-
-      if (mailtoBtn) {
-        const mailtoSubject = encodeURIComponent(`[${category}] ${subject} - ${name}`);
-        const mailtoBody = encodeURIComponent(`Dear Smart Spectacle Research Team,\n\nName: ${name}\nEmail: ${email}\nCategory: ${category}\n\nMessage:\n${message}\n\nKind regards,\n${name}`);
-        mailtoBtn.href = `mailto:cdap.spectacle@sliit.lk?subject=${mailtoSubject}&body=${mailtoBody}`;
-        mailtoBtn.style.display = 'inline-flex';
+    copyTemplateBtn?.addEventListener('click', async () => {
+      const draft = getDraft();
+      if (!draft) return;
+      try {
+        await navigator.clipboard.writeText(`To: ${recipients.join(', ')}\nSubject: ${draft.subject}\n\n${draft.body}`);
+        showContactFeedback('Email template copied to the clipboard.', 'success');
+      } catch {
+        showContactFeedback('Copying is unavailable in this browser. Please use Open email app.', 'error');
       }
     });
   }

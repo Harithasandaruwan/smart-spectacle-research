@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact the Smart Spectacle research team (R26-IT-134) at SLIIT. Phone numbers, emails, location, and interactive email template.">
+  <meta name="description" content="Contact the four Smart Spectacle researchers at SLIIT and draft an email to the R26-IT-134 project team.">
   <title>Contact Us | Smart Spectacle | R26-IT-134</title>
   <link rel="icon" type="image/svg+xml" href="images/smart-spectacle.svg">
   <link rel="stylesheet" href="css/style.css">
@@ -65,134 +65,69 @@
     </nav>
   </header>
 
-  <!-- Page Header Banner -->
-  <div class="page-header">
+  <main id="main" class="section contact-section">
     <div class="container">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <span>Contact us</span>
+        <a href="index.html">Home</a><span>/</span><span>Contact us</span>
       </nav>
-      <span class="eyebrow eyebrow-badge">Communication &amp; Inquiries</span>
-      <h1>Contact the Research Group</h1>
-      <p class="page-header-lead">
-        Get in touch with the researchers, project supervisors, or the academic department regarding evaluation queries, collaborative research, or technical specifications.
-      </p>
-    </div>
-  </div>
-
-  <!-- Main Content -->
-  <main id="main" class="section">
-    <div class="container">
       <div class="contact-grid">
-        <!-- Column 1: General Contacts Phone Numbers & Emails (Slide 15) -->
-        <div>
-          <span class="eyebrow">Direct Contact Details</span>
-          <h2 style="margin-bottom: 24px;">Official Channels</h2>
+        <div class="contact-intro">
+          <span class="eyebrow">06 · Contact</span>
+          <h1>Contact the<br>project team</h1>
+          <p class="contact-lead">Have a question about Smart Spectacle or our research? Complete the form to create a ready-to-send email for the project team.</p>
 
-          <div class="contact-info-card">
-            <!-- Phone Numbers -->
-            <div class="contact-item">
-              <div class="contact-icon" aria-hidden="true">📞</div>
-              <div class="contact-item-text">
-                <strong>General Phone Numbers</strong>
-                <p style="margin-bottom: 4px;">+94 11 754 4801 (SLIIT General Hotline)</p>
-                <p style="margin-bottom: 4px;">+94 11 754 3600 (Faculty of Computing)</p>
-                <p>+94 77 123 4567 (Project Team Lead Hotline)</p>
+          <form id="contact-form" class="contact-form-card">
+            <div class="contact-form-row">
+              <div class="form-group">
+                <label for="sender-name">Your name</label>
+                <input class="form-control" type="text" id="sender-name" name="name" autocomplete="name" required>
+              </div>
+              <div class="form-group">
+                <label for="sender-email">Your email</label>
+                <input class="form-control" type="email" id="sender-email" name="email" autocomplete="email" required>
               </div>
             </div>
-
-            <!-- Emails -->
-            <div class="contact-item">
-              <div class="contact-icon" aria-hidden="true">✉</div>
-              <div class="contact-item-text">
-                <strong>General E-mails</strong>
-                <p style="margin-bottom: 4px;">
-                  <a href="mailto:cdap.spectacle@sliit.lk">cdap.spectacle@sliit.lk</a> (Project Desk)
-                </p>
-                <p style="margin-bottom: 4px;">
-                  <a href="mailto:it22074690@my.sliit.lk">it22074690@my.sliit.lk</a> (Team Representative)
-                </p>
-                <p>
-                  <a href="mailto:info@sliit.lk">info@sliit.lk</a> (Faculty Secretariat)
-                </p>
-              </div>
+            <div class="form-group">
+              <label for="sender-subject">Subject</label>
+              <input class="form-control" type="text" id="sender-subject" name="subject" value="Smart Spectacle Research Inquiry" required>
             </div>
-
-            <!-- Physical Location -->
-            <div class="contact-item" style="margin-bottom: 0;">
-              <div class="contact-icon" aria-hidden="true">📍</div>
-              <div class="contact-item-text">
-                <strong>Campus &amp; Lab Address</strong>
-                <p style="margin-bottom: 4px;">
-                  Department of Information Technology,<br>
-                  Faculty of Computing,<br>
-                  Sri Lanka Institute of Information Technology,<br>
-                  New Kandy Road, Malabe 10115, Sri Lanka.
-                </p>
-              </div>
+            <div class="form-group">
+              <label for="sender-message">Message</label>
+              <textarea class="form-control" id="sender-message" name="message" rows="5" placeholder="How can our research team help you?" required></textarea>
             </div>
-          </div>
-
-          <div class="notice" style="margin-top: 24px;">
-            <strong>Academic Evaluation Inquiries</strong>
-            <p>
-              For formal CDAP evaluation panels, please coordinate directly with the supervisor <strong>Mr. Ravi Supunya</strong> or co-supervisor <strong>Prof. Anuradha Jayakody</strong> via official SLIIT channels.
-            </p>
-          </div>
+            <div class="contact-form-actions">
+              <button type="submit" class="button button-primary">Open email app</button>
+              <button type="button" id="copy-template" class="button button-secondary">Copy template</button>
+            </div>
+            <p class="contact-privacy">Your message is generated locally and is not stored by this website.</p>
+            <p id="form-feedback" class="form-feedback" role="status" aria-live="polite"></p>
+          </form>
         </div>
 
-        <!-- Column 2: General Email Template (Mandated by Slide 15) -->
-        <div>
-          <span class="eyebrow">Interactive Inquiry Form</span>
-          <h2 style="margin-bottom: 24px;">General E-mail Template</h2>
-
-          <div class="contact-form-card">
-            <p style="margin-bottom: 20px; font-size: 0.95rem;">
-              Use this standardized e-mail template to draft an inquiry. You can send it directly or generate a pre-formatted message in your default email application.
-            </p>
-
-            <form id="contact-form" novalidate>
-              <div class="form-group">
-                <label for="sender-name">Your Full Name <span style="color: #c92a2a;">*</span></label>
-                <input class="form-control" type="text" id="sender-name" name="name" placeholder="e.g. Dr. Jane Smith" required>
-              </div>
-
-              <div class="form-group">
-                <label for="sender-email">Your E-mail Address <span style="color: #c92a2a;">*</span></label>
-                <input class="form-control" type="email" id="sender-email" name="email" placeholder="e.g. janesmith@university.ac.lk" required>
-              </div>
-
-              <div class="form-group">
-                <label for="sender-category">Inquiry Category</label>
-                <select class="form-control" id="sender-category" name="category">
-                  <option value="Academic Examination">Academic Examination / CDAP Evaluation</option>
-                  <option value="Research Collaboration">Research Collaboration / Feedback</option>
-                  <option value="Technical Question">Technical &amp; Hardware Specification Query</option>
-                  <option value="General Inquiry" selected>General Inquiry</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="sender-subject">Subject <span style="color: #c92a2a;">*</span></label>
-                <input class="form-control" type="text" id="sender-subject" name="subject" placeholder="e.g. Smart Spectacle Evaluation Schedule" required>
-              </div>
-
-              <div class="form-group">
-                <label for="sender-message">Message Template Content <span style="color: #c92a2a;">*</span></label>
-                <textarea class="form-control" id="sender-message" name="message" rows="5" placeholder="Please enter the details of your inquiry or comments..." required></textarea>
-              </div>
-
-              <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
-                <button type="submit" class="button button-primary">Draft Message &amp; Submit</button>
-                <a id="mailto-btn" class="btn-pill btn-pill-outline" href="#" style="display: none; padding: 12px 18px;">
-                  Open in Default E-mail Client ↗
-                </a>
-              </div>
-
-              <div id="form-feedback" class="form-feedback" role="status" aria-live="polite"></div>
-            </form>
+        <div class="contact-team" aria-label="Research team contact details">
+          <div class="contact-team-grid">
+            <article class="researcher-card">
+              <div class="researcher-head"><span class="researcher-avatar" aria-hidden="true">SU</span><div><span class="researcher-role">Researcher</span><h2>Sandaruwan U.D.H</h2></div></div>
+              <a href="mailto:IT22074690@my.sliit.lk">IT22074690@my.sliit.lk</a>
+              <a href="tel:+94769031525">+94 76 903 1525</a>
+            </article>
+            <article class="researcher-card">
+              <div class="researcher-head"><span class="researcher-avatar" aria-hidden="true">LV</span><div><span class="researcher-role">Researcher</span><h2>Lakshika V.G.P</h2></div></div>
+              <a href="mailto:IT22153418@my.sliit.lk">IT22153418@my.sliit.lk</a>
+              <a href="tel:+94768001763">+94 76 800 1763</a>
+            </article>
+            <article class="researcher-card">
+              <div class="researcher-head"><span class="researcher-avatar" aria-hidden="true">TR</span><div><span class="researcher-role">Researcher</span><h2>Tharindu R.M.J</h2></div></div>
+              <a href="mailto:IT22234384@my.sliit.lk">IT22234384@my.sliit.lk</a>
+              <a href="tel:+94776675157">+94 77 667 5157</a>
+            </article>
+            <article class="researcher-card">
+              <div class="researcher-head"><span class="researcher-avatar" aria-hidden="true">AN</span><div><span class="researcher-role">Researcher</span><h2>Aqeel N.M</h2></div></div>
+              <a href="mailto:IT22063014@my.sliit.lk">IT22063014@my.sliit.lk</a>
+              <a href="tel:+94763540475">+94 76 354 0475</a>
+            </article>
           </div>
+          <p class="contact-project-id">SLIIT · Smart Spectacle · R26-IT-134</p>
         </div>
       </div>
     </div>
