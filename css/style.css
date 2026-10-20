@@ -302,6 +302,7 @@ img {
 .brand-text {
   display: flex;
   flex-direction: column;
+  white-space: nowrap;
 }
 
 .brand-text span {
@@ -314,7 +315,7 @@ img {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 6px 14px;
+  gap: 6px 10px;
   flex-wrap: wrap;
 }
 
