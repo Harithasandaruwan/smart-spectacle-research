@@ -216,7 +216,7 @@
           <article class="card">
             <h3>Optional Carer Subscription</h3>
             <p>
-              Covers the mobile application and alert delivery. It matters less than it appears: everything the wearer depends on works offline, and only the guardian alerting path needs a service behind it. The subscription is genuinely optional rather than a condition of the device functioning.
+              Covers the mobile application and alert delivery, structured as the tiers below. It matters less than it appears: everything the wearer depends on works offline, and only the guardian alerting path needs a service behind it. The subscription is genuinely optional rather than a condition of the device functioning.
             </p>
           </article>
 
@@ -234,11 +234,79 @@
       </div>
     </section>
 
-    <!-- 5. Route to Market -->
-    <section id="route-to-market" class="section">
+
+    <!-- 5. Subscription Tiers -->
+    <section id="pricing" class="section">
+      <div class="container">
+        <span class="eyebrow">Who Pays, and For What</span>
+        <h2>5. Proposed Subscription Tiers</h2>
+        <p class="section-intro">
+          Three tiers, structured so that the safety features a wearer depends on never sit behind a paywall. Everything in the free tier runs on the device itself, so a household that buys the hardware and pays nothing further still has a working navigation aid. Subscriptions add what a remote caregiver needs, not what the wearer needs.
+        </p>
+
+        <div class="grid three-columns">
+
+          <article class="card tier-card">
+            <span class="tier-label">Tier 1</span>
+            <h3>Essential</h3>
+            <p class="tier-price">Hardware cost only &mdash; no recurring fee</p>
+            <p class="tier-audience">
+              For families and individual users who need basic safety on the device itself.
+            </p>
+            <ul class="tier-features">
+              <li><strong>On-device audio guidance</strong> &mdash; obstacle and step detection announced by the wearable, with no connection required</li>
+              <li><strong>Standard cloud telemetry</strong> &mdash; location coordinates updated over ordinary Wi-Fi</li>
+              <li><strong>Single guardian access</strong> &mdash; one caregiver account</li>
+              <li><strong>Local incident log</strong> &mdash; seven days of history held in the app</li>
+            </ul>
+          </article>
+
+          <article class="card tier-card tier-featured">
+            <span class="tier-label">Tier 2 &middot; Recommended</span>
+            <h3>Guardian Pro</h3>
+            <p class="tier-price">LKR 1,500 &ndash; 2,500 per month, or annually</p>
+            <p class="tier-audience">
+              For working caregivers who need to watch over a relative from a distance.
+            </p>
+            <ul class="tier-features">
+              <li><strong>Dynamic risk prioritisation</strong> &mdash; continuous analysis by the project's random forest classifier, rating each moment Safe, Warning or Critical</li>
+              <li><strong>Inactivity and silent emergency monitoring</strong> &mdash; stillness of ten seconds or more triggers a spoken challenge, and no answer escalates to the carer</li>
+              <li><strong>Offline dual-channel failover</strong> &mdash; encrypted SMS alerts and location sync through the GSM module when the internet drops</li>
+              <li><strong>Indoor floor map</strong> &mdash; real-time position with heading direction</li>
+              <li><strong>Multi-guardian support</strong> &mdash; up to two caregivers connected at once</li>
+              <li><strong>Thirty-day incident history</strong> &mdash; detailed logs for reviewing what happened and when</li>
+            </ul>
+          </article>
+
+          <article class="card tier-card">
+            <span class="tier-label">Tier 3</span>
+            <h3>Institutional</h3>
+            <p class="tier-price">Per-device enterprise licence</p>
+            <p class="tier-audience">
+              For elder care homes, rehabilitation centres, visual impairment support organisations and hospitals.
+            </p>
+            <ul class="tier-features">
+              <li><strong>Multi-patient dashboard</strong> &mdash; nurses and carers monitor several devices from one screen</li>
+              <li><strong>On-demand live camera and push-to-talk</strong> &mdash; low-latency video and a two-way voice bridge, subject to the consent conditions in Section 7</li>
+              <li><strong>Custom floor map digitisation</strong> &mdash; multi-floor indoor maps built for the institution's own buildings</li>
+              <li><strong>Priority emergency escalation</strong> &mdash; automatic alert to emergency services or a clinic hotline when no guardian responds</li>
+              <li><strong>Audit and analytical reports</strong> &mdash; mobility analysis logs exportable for clinicians and therapists</li>
+            </ul>
+          </article>
+
+        </div>
+
+        <p class="section-intro" style="margin-top: 30px;">
+          The deliberate choice here is what sits in Tier&nbsp;1. Detection, spoken guidance and on-device positioning are the features that keep a wearer safe, and they work offline with no subscription. What the paid tiers add is remote visibility for someone else &mdash; which is a convenience for the carer rather than a dependency for the person wearing the device.
+        </p>
+      </div>
+    </section>
+
+    <!-- 6. Route to Market -->
+    <section id="route-to-market" class="section section-muted">
       <div class="container">
         <span class="eyebrow">Reaching the People Who Need It</span>
-        <h2>5. Route to Market</h2>
+        <h2>6. Route to Market</h2>
         <p class="section-intro">
           Three segments are addressable, in order. The route runs through institutions rather than direct to consumers, because a safety device needs a supervised setting during early deployment.
         </p>
@@ -268,11 +336,11 @@
       </div>
     </section>
 
-    <!-- 6. Responsibilities -->
-    <section id="responsibilities" class="section section-muted">
+    <!-- 7. Responsibilities -->
+    <section id="responsibilities" class="section">
       <div class="container">
         <span class="eyebrow">Obligations That Come With Selling, Not Demonstrating</span>
-        <h2>6. Ethical and Regulatory Position</h2>
+        <h2>7. Ethical and Regulatory Position</h2>
         <p class="section-intro">
           A prototype shown to a panel and a product sold to a blind user carry different obligations. Three are recorded here because they shape what the commercial version may claim and do.
         </p>
@@ -302,11 +370,11 @@
       </div>
     </section>
 
-    <!-- 7. Risks -->
-    <section id="commercial-risks" class="section">
+    <!-- 8. Risks -->
+    <section id="commercial-risks" class="section section-muted">
       <div class="container">
         <span class="eyebrow">What Could Prevent This Reaching Users</span>
-        <h2>7. Commercial Risks</h2>
+        <h2>8. Commercial Risks</h2>
         <p class="section-intro">
           The principal risks to commercialisation, and the response to each.
         </p>
