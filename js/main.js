@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contact-form');
   const formFeedback = document.getElementById('form-feedback');
   const copyTemplateBtn = document.getElementById('copy-template');
-  const openGmailBtn = document.getElementById('open-gmail');
 
   if (contactForm) {
     const recipients = [
@@ -145,14 +144,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const draft = getDraft();
-      if (!draft) return;
-      const mailto = `mailto:${recipients.join(',')}?subject=${encodeURIComponent(draft.subject)}&body=${encodeURIComponent(draft.body)}`;
-      window.location.href = mailto;
-      showContactFeedback('Your email app should open with the message ready to send. If nothing happens, use "Open in Gmail" instead.', 'success');
-    });
-
-    openGmailBtn?.addEventListener('click', () => {
       const draft = getDraft();
       if (!draft) return;
       const gmail = 'https://mail.google.com/mail/?view=cm&fs=1'
